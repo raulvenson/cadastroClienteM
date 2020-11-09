@@ -59,9 +59,7 @@ public class CadastroView extends javax.swing.JFrame {
         txtNome = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        txtCPF = new javax.swing.JTextField();
-        txtCNPJ = new javax.swing.JTextField();
+        txtCpfCnpj = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         txtCEP = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
@@ -120,9 +118,7 @@ public class CadastroView extends javax.swing.JFrame {
 
         jLabel3.setText("Tipo Pessoa");
 
-        jLabel4.setText("CPF");
-
-        jLabel5.setText("CNPJ");
+        jLabel4.setText("CPF/CNPJ");
 
         jLabel6.setText("CEP");
 
@@ -162,6 +158,9 @@ public class CadastroView extends javax.swing.JFrame {
             }
         ));
         jTableClientes.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTableClientesKeyPressed(evt);
+            }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTableClientesKeyReleased(evt);
             }
@@ -193,7 +192,6 @@ public class CadastroView extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(jLabel3)
                     .addComponent(jLabel4)
-                    .addComponent(jLabel5)
                     .addComponent(jLabel6)
                     .addComponent(jLabel7)
                     .addComponent(jLabel8)
@@ -219,8 +217,7 @@ public class CadastroView extends javax.swing.JFrame {
                                 .addComponent(txtCEP, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton1))
-                            .addComponent(txtCNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCpfCnpj, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -258,12 +255,8 @@ public class CadastroView extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(txtCNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(txtCpfCnpj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(36, 36, 36)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
                             .addComponent(txtCEP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -335,6 +328,7 @@ public class CadastroView extends javax.swing.JFrame {
 
             txtNome.setText("");
             txtTipoPessoa.setText("");
+            txtCpfCnpj.setText("");
             txtCEP.setText("");
             txtEndereco.setText("");
             txtNumero.setText("");
@@ -359,21 +353,22 @@ public class CadastroView extends javax.swing.JFrame {
 
         cliente.setNome(txtNome.getText());
         cliente.setTipopessoa(txtTipoPessoa.getText());
-        cliente.setCep(txtCEP.getText());
+        cliente.setCep(Integer.parseInt(txtCEP.getText()));
         cliente.setEndereco(txtEndereco.getText());
-        cliente.setNumero(txtNumero.getText());
+        cliente.setNumero(Integer.parseInt(txtNumero.getText()));
         cliente.setComplemento(txtComplemento.getText());
         cliente.setBairro(txtBairro.getText());
         cliente.setEstado(txtEstado.getText());
         cliente.setCidade(txtCidade.getText());
         cliente.setEmail(txtEmail.getText());
-        cliente.setTelefone(txtTelefone.getText());
+        cliente.setTelefone(Integer.parseInt(txtTelefone.getText()));
         cliente.setSituacao(txtSituacao.getText());
 
         clienteDao.save(cliente);
 
         txtNome.setText("");
         txtTipoPessoa.setText("");
+        txtCpfCnpj.setText("");
         txtCEP.setText("");
         txtEndereco.setText("");
         txtNumero.setText("");
@@ -396,15 +391,15 @@ public class CadastroView extends javax.swing.JFrame {
 
             cliente.setNome(txtNome.getText());
             cliente.setTipopessoa(txtTipoPessoa.getText());
-            cliente.setCep(txtCEP.getText());
+            cliente.setCep(Integer.parseInt(txtCEP.getText()));
             cliente.setEndereco(txtEndereco.getText());
-            cliente.setNumero(txtNumero.getText());
+            cliente.setNumero(Integer.parseInt(txtNumero.getText()));
             cliente.setComplemento(txtComplemento.getText());
             cliente.setBairro(txtBairro.getText());
             cliente.setEstado(txtEstado.getText());
             cliente.setCidade(txtCidade.getText());
             cliente.setEmail(txtEmail.getText());
-            cliente.setTelefone(txtTelefone.getText());
+            cliente.setTelefone(Integer.parseInt(txtTelefone.getText()));
             cliente.setSituacao(txtSituacao.getText());
 
             cliente.setCod((int) jTableClientes.getValueAt(jTableClientes.getSelectedRow(), 0));
@@ -413,6 +408,7 @@ public class CadastroView extends javax.swing.JFrame {
 
             txtNome.setText("");
             txtTipoPessoa.setText("");
+            txtCpfCnpj.setText("");
             txtCEP.setText("");
             txtEndereco.setText("");
             txtNumero.setText("");
@@ -437,6 +433,14 @@ public class CadastroView extends javax.swing.JFrame {
         }
          
     }//GEN-LAST:event_jTableClientesKeyReleased
+
+    private void jTableClientesKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTableClientesKeyPressed
+        // TODO add your handling code here:
+        
+        if (jTableClientes.getSelectedRow() != -1) {
+            txtNome.setText(jTableClientes.getValueAt(jTableClientes.getSelectedRow(), 1).toString());
+        }
+    }//GEN-LAST:event_jTableClientesKeyPressed
 
     /**
      * @param args the command line arguments
@@ -489,7 +493,6 @@ public class CadastroView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -500,10 +503,9 @@ public class CadastroView extends javax.swing.JFrame {
     private javax.swing.JTable jTableClientes;
     private javax.swing.JTextField txtBairro;
     private javax.swing.JTextField txtCEP;
-    private javax.swing.JTextField txtCNPJ;
-    private javax.swing.JTextField txtCPF;
     private javax.swing.JTextField txtCidade;
     private javax.swing.JTextField txtComplemento;
+    private javax.swing.JTextField txtCpfCnpj;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtEndereco;
     private javax.swing.JTextField txtEstado;

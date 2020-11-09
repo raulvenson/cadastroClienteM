@@ -14,26 +14,17 @@ public class Cliente {
     private int cod;
     private String nome;
     private String tipopessoa;
-    private String cpf;
-    private String cnpj;
-    private String cep;
+    private String cpfCnpj;
+    private int cep;
     private String endereco;
-    private String numero;
+    private int numero;
     private String complemento;
     private String bairro;
     private String estado;
     private String cidade;
     private String email;
-    private String telefone;
+    private int telefone;
     private String situacao;
-
-    public String getTipopessoa() {
-        return tipopessoa;
-    }
-
-    public void setTipopessoa(String tipopessoa) {
-        this.tipopessoa = tipopessoa;
-    }
 
     public int getCod() {
         return cod;
@@ -51,27 +42,27 @@ public class Cliente {
         this.nome = nome;
     }
 
-    public String getCpf() {
-        return cpf;
+    public String getTipopessoa() {
+        return tipopessoa;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+    public void setTipopessoa(String tipopessoa) {
+        this.tipopessoa = tipopessoa;
     }
 
-    public String getCnpj() {
-        return cnpj;
+    public String getCpfCnpj() {
+        return cpfCnpj;
     }
 
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
+    public void setCpfCnpj(String cpfCnpj) {
+        this.cpfCnpj = cpfCnpj;
     }
 
-    public String getCep() {
+    public int getCep() {
         return cep;
     }
 
-    public void setCep(String cep) {
+    public void setCep(int cep) {
         this.cep = cep;
     }
 
@@ -83,11 +74,11 @@ public class Cliente {
         this.endereco = endereco;
     }
 
-    public String getNumero() {
+    public int getNumero() {
         return numero;
     }
 
-    public void setNumero(String numero) {
+    public void setNumero(int numero) {
         this.numero = numero;
     }
 
@@ -131,11 +122,11 @@ public class Cliente {
         this.email = email;
     }
 
-    public String getTelefone() {
+    public int getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(String telefone) {
+    public void setTelefone(int telefone) {
         this.telefone = telefone;
     }
 
@@ -146,6 +137,7 @@ public class Cliente {
     public void setSituacao(String situacao) {
         this.situacao = situacao;
     }
+
     
     
     

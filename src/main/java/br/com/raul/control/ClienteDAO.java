@@ -36,15 +36,15 @@ public class ClienteDAO {
 
             pstm.setString(1, cliente.getNome());
             pstm.setString(2, cliente.getTipopessoa());
-            pstm.setString(3, cliente.getCep());
+            pstm.setInt(3, cliente.getCep());
             pstm.setString(4, cliente.getEndereco());
-            pstm.setString(5, cliente.getNumero());
+            pstm.setInt(5, cliente.getNumero());
             pstm.setString(6, cliente.getComplemento());
             pstm.setString(7, cliente.getBairro());
             pstm.setString(8, cliente.getEstado());
             pstm.setString(9, cliente.getCidade());
             pstm.setString(10, cliente.getEmail());
-            pstm.setString(11, cliente.getTelefone());
+            pstm.setInt(11, cliente.getTelefone());
             pstm.setString(12, cliente.getSituacao());
 
             pstm.execute();
@@ -83,16 +83,16 @@ public class ClienteDAO {
                 cliente.setCod(rs.getInt("cod"));
                 cliente.setNome(rs.getString("nome"));
                 cliente.setTipopessoa(rs.getString("tipopessoa"));
-                cliente.setCep(rs.getString("cep"));
-                cliente.setCep(rs.getString("endereco"));
-                cliente.setCep(rs.getString("numero"));
-                cliente.setCep(rs.getString("complemento"));
-                cliente.setCep(rs.getString("bairro"));
-                cliente.setCep(rs.getString("estado"));
-                cliente.setCep(rs.getString("cidade"));
-                cliente.setCep(rs.getString("email"));
-                cliente.setCep(rs.getString("telefone"));
-                cliente.setCep(rs.getString("situacao"));
+                cliente.setCep(rs.getInt("cep"));
+                cliente.setEndereco(rs.getString("endereco"));
+                cliente.setNumero(rs.getInt("numero"));
+                cliente.setComplemento(rs.getString("complemento"));
+                cliente.setBairro(rs.getString("bairro"));
+                cliente.setEstado(rs.getString("estado"));
+                cliente.setCidade(rs.getString("cidade"));
+                cliente.setEmail(rs.getString("email"));
+                cliente.setTelefone(rs.getInt("telefone"));
+                cliente.setSituacao(rs.getString("situacao"));
                 estados.add(cliente);
             }
             
@@ -119,15 +119,15 @@ public class ClienteDAO {
             
             pstm.setString(1, cliente.getNome());
             pstm.setString(2, cliente.getTipopessoa());
-            pstm.setString(3, cliente.getCep());
+            pstm.setInt(3, cliente.getCep());
             pstm.setString(4, cliente.getEndereco());
-            pstm.setString(5, cliente.getNumero());
+            pstm.setInt(5, cliente.getNumero());
             pstm.setString(6, cliente.getComplemento());
             pstm.setString(7, cliente.getBairro());
             pstm.setString(8, cliente.getEstado());
             pstm.setString(9, cliente.getCidade());
             pstm.setString(10, cliente.getEmail());
-            pstm.setString(11, cliente.getTelefone());
+            pstm.setInt(11, cliente.getTelefone());
             pstm.setString(12, cliente.getSituacao());
             pstm.setInt(13, cliente.getCod());
             
