@@ -19,7 +19,15 @@ public class ViewCadastroCliente extends javax.swing.JInternalFrame {
      */
     public ViewCadastroCliente() {
         initComponents();
+        
     }
+    public ViewCadastroCliente(int cod) {
+        initComponents();
+        ClienteDAO clienteDAO = new ClienteDAO();
+        Cliente cliente = clienteDAO.read(cod);
+        txtNome.setText(cliente.getNome());
+    }
+    
 
     Cliente cliente = new Cliente();
     ClienteDAO clienteDao = new ClienteDAO();

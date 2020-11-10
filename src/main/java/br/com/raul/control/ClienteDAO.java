@@ -5,7 +5,6 @@
  */
 package br.com.raul.control;
 
-
 import br.com.raul.conexao.Conexao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -30,7 +29,7 @@ public class ClienteDAO {
         PreparedStatement pstm = null;
 
         try {
-           conn = Conexao.getConexao();
+            conn = Conexao.getConexao();
 
             pstm = (PreparedStatement) conn.prepareStatement(sql);
 
@@ -66,19 +65,19 @@ public class ClienteDAO {
     }
 
     public List<Cliente> read() {
-        
+
         Connection conn = Conexao.getConexao();
         PreparedStatement pstm = null;
         ResultSet rs = null;
         String sql = "SELECT * FROM cliente";
-        
+
         List<Cliente> clientes = new ArrayList<>();
 
         try {
             pstm = (PreparedStatement) conn.prepareStatement(sql);
             rs = pstm.executeQuery();
-            
-            while(rs.next()){
+
+            while (rs.next()) {
                 Cliente cliente = new Cliente();
                 cliente.setCod(rs.getInt("cod"));
                 cliente.setNome(rs.getString("nome"));
@@ -95,16 +94,54 @@ public class ClienteDAO {
                 cliente.setSituacao(rs.getString("situacao"));
                 clientes.add(cliente);
             }
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             Conexao.closeConnection(conn, pstm, rs);
         }
-        
-        
+
         return clientes;
-        
+
+    }
+
+    public Cliente read(int cod) {
+
+        Connection conn = Conexao.getConexao();
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        String sql = "SELECT * FROM cliente where cod = ?";
+
+        Cliente cliente = new Cliente();
+        try {
+            pstm = (PreparedStatement) conn.prepareStatement(sql);
+            pstm.setInt(1, cod);
+            rs = pstm.executeQuery();
+
+            if (rs.next()) {
+                cliente.setCod(rs.getInt("cod"));
+                cliente.setNome(rs.getString("nome"));
+                cliente.setTipopessoa(rs.getString("tipopessoa"));
+                cliente.setCep(rs.getInt("cep"));
+                cliente.setEndereco(rs.getString("endereco"));
+                cliente.setNumero(rs.getInt("numero"));
+                cliente.setComplemento(rs.getString("complemento"));
+                cliente.setBairro(rs.getString("bairro"));
+                cliente.setEstado(rs.getString("estado"));
+                cliente.setCidade(rs.getString("cidade"));
+                cliente.setEmail(rs.getString("email"));
+                cliente.setTelefone(rs.getInt("telefone"));
+                cliente.setSituacao(rs.getString("situacao"));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            Conexao.closeConnection(conn, pstm, rs);
+        }
+
+        return cliente;
+
     }
 
     public void update(Cliente cliente) {
@@ -116,7 +153,7 @@ public class ClienteDAO {
         try {
 
             pstm = (PreparedStatement) conn.prepareStatement(sql);
-            
+
             pstm.setString(1, cliente.getNome());
             pstm.setString(2, cliente.getTipopessoa());
             pstm.setInt(3, cliente.getCep());
@@ -130,10 +167,9 @@ public class ClienteDAO {
             pstm.setInt(11, cliente.getTelefone());
             pstm.setString(12, cliente.getSituacao());
             pstm.setInt(13, cliente.getCod());
-            
 
             pstm.executeUpdate();
-            
+
             JOptionPane.showMessageDialog(null, "Atualizado com sucesso");
 
         } catch (Exception e) {
@@ -166,9 +202,8 @@ public class ClienteDAO {
             pstm.setInt(1, cliente.getCod());
 
             pstm.executeUpdate();
-            
+
             JOptionPane.showMessageDialog(null, "Excluido com sucesso!");
-            
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro ao excluir!");

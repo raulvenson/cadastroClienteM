@@ -18,7 +18,6 @@ public class CadastroView extends javax.swing.JFrame {
 
     Cliente cliente = new Cliente();
     ClienteDAO clienteDao = new ClienteDAO();
-    
 
     /**
      * Creates new form cadastroView
@@ -198,6 +197,20 @@ public class CadastroView extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+
+        if (jTableClientes.getSelectedRow() != -1) {
+
+            cliente.setCod((int) jTableClientes.getValueAt(jTableClientes.getSelectedRow(), 0));
+
+            ViewCadastroCliente telaCadCli = new ViewCadastroCliente(cliente.getCod());
+
+            jDesktopPane1.add(telaCadCli);
+            telaCadCli.setVisible(true);
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione uma linha para alterar");
+        }
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -217,7 +230,7 @@ public class CadastroView extends javax.swing.JFrame {
 
     private void jTableClientesKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTableClientesKeyPressed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_jTableClientesKeyPressed
 
     /**
