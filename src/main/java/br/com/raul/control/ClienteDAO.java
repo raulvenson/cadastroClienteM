@@ -36,15 +36,15 @@ public class ClienteDAO {
             pstm.setString(1, cliente.getNome());
             pstm.setString(2, cliente.getTipopessoa());
             pstm.setLong(3, cliente.getCpfCnpj());
-            pstm.setLong(4, cliente.getCep());
+            pstm.setInt(4, cliente.getCep());
             pstm.setString(5, cliente.getEndereco());
-            pstm.setLong(6, cliente.getNumero());
+            pstm.setInt(6, cliente.getNumero());
             pstm.setString(7, cliente.getComplemento());
             pstm.setString(8, cliente.getBairro());
             pstm.setString(9, cliente.getEstado());
             pstm.setString(10, cliente.getCidade());
             pstm.setString(11, cliente.getEmail());
-            pstm.setLong(12, cliente.getTelefone());
+            pstm.setInt(12, cliente.getTelefone());
             pstm.setString(13, cliente.getSituacao());
 
             pstm.execute();
@@ -83,6 +83,7 @@ public class ClienteDAO {
                 cliente.setCod(rs.getInt("cod"));
                 cliente.setNome(rs.getString("nome"));
                 cliente.setTipopessoa(rs.getString("tipopessoa"));
+                cliente.setCpfCnpj(rs.getLong("cpfcnpj"));
                 cliente.setCep(rs.getInt("cep"));
                 cliente.setEndereco(rs.getString("endereco"));
                 cliente.setNumero(rs.getInt("numero"));
@@ -157,15 +158,15 @@ public class ClienteDAO {
 
             pstm.setString(1, cliente.getNome());
             pstm.setString(2, cliente.getTipopessoa());
-            pstm.setLong(3, cliente.getCep());
+            pstm.setInt(3, cliente.getCep());
             pstm.setString(4, cliente.getEndereco());
-            pstm.setLong(5, cliente.getNumero());
+            pstm.setInt(5, cliente.getNumero());
             pstm.setString(6, cliente.getComplemento());
             pstm.setString(7, cliente.getBairro());
             pstm.setString(8, cliente.getEstado());
             pstm.setString(9, cliente.getCidade());
             pstm.setString(10, cliente.getEmail());
-            pstm.setLong(11, cliente.getTelefone());
+            pstm.setInt(11, cliente.getTelefone());
             pstm.setString(12, cliente.getSituacao());
             pstm.setInt(13, cliente.getCod());
 

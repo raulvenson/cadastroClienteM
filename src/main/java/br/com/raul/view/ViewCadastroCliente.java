@@ -60,7 +60,7 @@ public class ViewCadastroCliente extends javax.swing.JInternalFrame {
         jLabel13 = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
         txtCep = new javax.swing.JTextField();
-        txtCpfCnpj = new javax.swing.JTextField();
+        txtCpfCnpjs = new javax.swing.JTextField();
         jCTipoPessoa = new javax.swing.JComboBox<>();
         jCEstado = new javax.swing.JComboBox<>();
         jCSituacao = new javax.swing.JComboBox<>();
@@ -161,7 +161,7 @@ public class ViewCadastroCliente extends javax.swing.JInternalFrame {
                         .addGap(22, 22, 22)
                         .addComponent(jLabel3)
                         .addGap(53, 53, 53)
-                        .addComponent(txtCpfCnpj, javax.swing.GroupLayout.PREFERRED_SIZE, 705, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtCpfCnpjs, javax.swing.GroupLayout.PREFERRED_SIZE, 705, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addComponent(jLabel4)
@@ -239,7 +239,7 @@ public class ViewCadastroCliente extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(4, 4, 4)
                         .addComponent(jLabel3))
-                    .addComponent(txtCpfCnpj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCpfCnpjs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(6, 6, 6)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -331,7 +331,8 @@ public class ViewCadastroCliente extends javax.swing.JInternalFrame {
         
         cliente.setNome(txtNome.getText());
         cliente.setTipopessoa(jCTipoPessoa.getSelectedItem().toString());
-        cliente.setCpfCnpj(Integer.parseInt(txtCpfCnpj.getText()));
+        System.out.println(txtCpfCnpjs.getText());
+        cliente.setCpfCnpj(Long.parseLong(txtCpfCnpjs.getText()));
         cliente.setCep(Integer.parseInt(txtCep.getText()));
         cliente.setEndereco(txtEndereco.getText());
         cliente.setNumero(Integer.parseInt(txtNumero.getText()));
@@ -347,7 +348,7 @@ public class ViewCadastroCliente extends javax.swing.JInternalFrame {
         
         txtNome.setText("");
         jCTipoPessoa.setSelectedIndex(0);
-        txtCpfCnpj.setText("");
+        txtCpfCnpjs.setText("");
         txtCep.setText("");
         txtEndereco.setText("");
         txtComplemento.setText("");
@@ -395,7 +396,7 @@ public class ViewCadastroCliente extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtCep;
     private javax.swing.JTextField txtCidade;
     private javax.swing.JTextField txtComplemento;
-    private javax.swing.JTextField txtCpfCnpj;
+    private javax.swing.JTextField txtCpfCnpjs;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtEndereco;
     private javax.swing.JTextField txtNome;
