@@ -14,16 +14,16 @@ public class Cliente {
     private int cod;
     private String nome;
     private String tipopessoa;
-    private int cpfCnpj;
-    private int cep;
+    private long cpfCnpj;
+    private long cep;
     private String endereco;
-    private int numero;
+    private long numero;
     private String complemento;
     private String bairro;
     private String estado;
     private String cidade;
     private String email;
-    private int telefone;
+    private long telefone;
     private String situacao;
 
     public int getCod() {
@@ -50,19 +50,19 @@ public class Cliente {
         this.tipopessoa = tipopessoa;
     }
 
-    public int getCpfCnpj() {
+    public long getCpfCnpj() {
         return cpfCnpj;
     }
 
-    public void setCpfCnpj(int cpfCnpj) {
+    public void setCpfCnpj(long cpfCnpj) {
         this.cpfCnpj = cpfCnpj;
     }
 
-    public int getCep() {
+    public long getCep() {
         return cep;
     }
 
-    public void setCep(int cep) {
+    public void setCep(long cep) {
         this.cep = cep;
     }
 
@@ -74,11 +74,11 @@ public class Cliente {
         this.endereco = endereco;
     }
 
-    public int getNumero() {
+    public long getNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(long numero) {
         this.numero = numero;
     }
 
@@ -122,11 +122,11 @@ public class Cliente {
         this.email = email;
     }
 
-    public int getTelefone() {
+    public long getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(int telefone) {
+    public void setTelefone(long telefone) {
         this.telefone = telefone;
     }
 
@@ -138,6 +138,7 @@ public class Cliente {
         this.situacao = situacao;
     }
 
+    
     
     
 }

@@ -23,7 +23,7 @@ import javax.swing.JOptionPane;
 public class ClienteDAO {
 
     public void save(Cliente cliente) {
-        String sql = "insert into cliente (nome, tipopessoa, cep, endereco, numero, complemento, bairro, estado, cidade, email, telefone, situacao) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "insert into cliente (nome, tipopessoa, cpfcnpj, cep, endereco, numero, complemento, bairro, estado, cidade, email, telefone, situacao) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         Connection conn = null;
         PreparedStatement pstm = null;
@@ -35,16 +35,17 @@ public class ClienteDAO {
 
             pstm.setString(1, cliente.getNome());
             pstm.setString(2, cliente.getTipopessoa());
-            pstm.setInt(3, cliente.getCep());
-            pstm.setString(4, cliente.getEndereco());
-            pstm.setInt(5, cliente.getNumero());
-            pstm.setString(6, cliente.getComplemento());
-            pstm.setString(7, cliente.getBairro());
-            pstm.setString(8, cliente.getEstado());
-            pstm.setString(9, cliente.getCidade());
-            pstm.setString(10, cliente.getEmail());
-            pstm.setInt(11, cliente.getTelefone());
-            pstm.setString(12, cliente.getSituacao());
+            pstm.setLong(3, cliente.getCpfCnpj());
+            pstm.setLong(4, cliente.getCep());
+            pstm.setString(5, cliente.getEndereco());
+            pstm.setLong(6, cliente.getNumero());
+            pstm.setString(7, cliente.getComplemento());
+            pstm.setString(8, cliente.getBairro());
+            pstm.setString(9, cliente.getEstado());
+            pstm.setString(10, cliente.getCidade());
+            pstm.setString(11, cliente.getEmail());
+            pstm.setLong(12, cliente.getTelefone());
+            pstm.setString(13, cliente.getSituacao());
 
             pstm.execute();
 
@@ -156,15 +157,15 @@ public class ClienteDAO {
 
             pstm.setString(1, cliente.getNome());
             pstm.setString(2, cliente.getTipopessoa());
-            pstm.setInt(3, cliente.getCep());
+            pstm.setLong(3, cliente.getCep());
             pstm.setString(4, cliente.getEndereco());
-            pstm.setInt(5, cliente.getNumero());
+            pstm.setLong(5, cliente.getNumero());
             pstm.setString(6, cliente.getComplemento());
             pstm.setString(7, cliente.getBairro());
             pstm.setString(8, cliente.getEstado());
             pstm.setString(9, cliente.getCidade());
             pstm.setString(10, cliente.getEmail());
-            pstm.setInt(11, cliente.getTelefone());
+            pstm.setLong(11, cliente.getTelefone());
             pstm.setString(12, cliente.getSituacao());
             pstm.setInt(13, cliente.getCod());
 
