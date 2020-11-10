@@ -14,7 +14,7 @@ public class Cliente {
     private int cod;
     private String nome;
     private String tipopessoa;
-    private String cpfCnpj;
+    private int cpfCnpj;
     private int cep;
     private String endereco;
     private int numero;
@@ -50,11 +50,11 @@ public class Cliente {
         this.tipopessoa = tipopessoa;
     }
 
-    public String getCpfCnpj() {
+    public int getCpfCnpj() {
         return cpfCnpj;
     }
 
-    public void setCpfCnpj(String cpfCnpj) {
+    public void setCpfCnpj(int cpfCnpj) {
         this.cpfCnpj = cpfCnpj;
     }
 
@@ -138,7 +138,6 @@ public class Cliente {
         this.situacao = situacao;
     }
 
-    
     
     
 }

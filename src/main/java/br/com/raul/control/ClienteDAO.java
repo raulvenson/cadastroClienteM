@@ -72,7 +72,7 @@ public class ClienteDAO {
         ResultSet rs = null;
         String sql = "SELECT * FROM cliente";
         
-        List<Cliente> estados = new ArrayList<>();
+        List<Cliente> clientes = new ArrayList<>();
 
         try {
             pstm = (PreparedStatement) conn.prepareStatement(sql);
@@ -93,7 +93,7 @@ public class ClienteDAO {
                 cliente.setEmail(rs.getString("email"));
                 cliente.setTelefone(rs.getInt("telefone"));
                 cliente.setSituacao(rs.getString("situacao"));
-                estados.add(cliente);
+                clientes.add(cliente);
             }
             
         } catch (SQLException ex) {
@@ -103,7 +103,7 @@ public class ClienteDAO {
         }
         
         
-        return estados;
+        return clientes;
         
     }
 
