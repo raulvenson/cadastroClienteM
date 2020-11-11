@@ -35,8 +35,8 @@ public class ClienteDAO {
 
             pstm.setString(1, cliente.getNome());
             pstm.setString(2, cliente.getTipopessoa());
-            pstm.setLong(3, cliente.getCpfCnpj());
-            pstm.setInt(4, cliente.getCep());
+            pstm.setString(3, cliente.getCpfCnpj());
+            pstm.setString(4, cliente.getCep());
             pstm.setString(5, cliente.getEndereco());
             pstm.setInt(6, cliente.getNumero());
             pstm.setString(7, cliente.getComplemento());
@@ -44,7 +44,7 @@ public class ClienteDAO {
             pstm.setString(9, cliente.getEstado());
             pstm.setString(10, cliente.getCidade());
             pstm.setString(11, cliente.getEmail());
-            pstm.setInt(12, cliente.getTelefone());
+            pstm.setString(12, cliente.getTelefone());
             pstm.setString(13, cliente.getSituacao());
 
             pstm.execute();
@@ -83,8 +83,8 @@ public class ClienteDAO {
                 cliente.setCod(rs.getInt("cod"));
                 cliente.setNome(rs.getString("nome"));
                 cliente.setTipopessoa(rs.getString("tipopessoa"));
-                cliente.setCpfCnpj(rs.getLong("cpfcnpj"));
-                cliente.setCep(rs.getInt("cep"));
+                cliente.setCpfCnpj(rs.getString("cpfcnpj"));
+                cliente.setCep(rs.getString("cep"));
                 cliente.setEndereco(rs.getString("endereco"));
                 cliente.setNumero(rs.getInt("numero"));
                 cliente.setComplemento(rs.getString("complemento"));
@@ -92,7 +92,7 @@ public class ClienteDAO {
                 cliente.setEstado(rs.getString("estado"));
                 cliente.setCidade(rs.getString("cidade"));
                 cliente.setEmail(rs.getString("email"));
-                cliente.setTelefone(rs.getInt("telefone"));
+                cliente.setTelefone(rs.getString("telefone"));
                 cliente.setSituacao(rs.getString("situacao"));
                 clientes.add(cliente);
             }
@@ -107,7 +107,7 @@ public class ClienteDAO {
 
     }
 
-    public Cliente read(int cod) {
+    public Cliente find(int cod) {
 
         Connection conn = Conexao.getConexao();
         PreparedStatement pstm = null;
@@ -124,7 +124,8 @@ public class ClienteDAO {
                 cliente.setCod(rs.getInt("cod"));
                 cliente.setNome(rs.getString("nome"));
                 cliente.setTipopessoa(rs.getString("tipopessoa"));
-                cliente.setCep(rs.getInt("cep"));
+                cliente.setCpfCnpj(rs.getString("cpfcnpj"));
+                cliente.setCep(rs.getString("cep"));
                 cliente.setEndereco(rs.getString("endereco"));
                 cliente.setNumero(rs.getInt("numero"));
                 cliente.setComplemento(rs.getString("complemento"));
@@ -132,7 +133,7 @@ public class ClienteDAO {
                 cliente.setEstado(rs.getString("estado"));
                 cliente.setCidade(rs.getString("cidade"));
                 cliente.setEmail(rs.getString("email"));
-                cliente.setTelefone(rs.getInt("telefone"));
+                cliente.setTelefone(rs.getString("telefone"));
                 cliente.setSituacao(rs.getString("situacao"));
             }
 
@@ -147,7 +148,7 @@ public class ClienteDAO {
     }
 
     public void update(Cliente cliente) {
-        String sql = "update estados set nome = ?, tipopessoa = ? cep = ?, endereco = ?, numero = ?, complemento = ?, bairro = ?, estado = ?, cidade = ?, email = ?, telefone = ?, situacao = ?  WHERE cod = ?";
+        String sql = "update cliente set nome = ?, tipopessoa = ?, cpfcnpj = ?, cep = ?, endereco = ?, numero = ?, complemento = ?, bairro = ?, estado = ?, cidade = ?, email = ?, telefone = ?, situacao = ?  WHERE cod = ?";
 
         Connection conn = Conexao.getConexao();
         PreparedStatement pstm = null;
@@ -158,17 +159,18 @@ public class ClienteDAO {
 
             pstm.setString(1, cliente.getNome());
             pstm.setString(2, cliente.getTipopessoa());
-            pstm.setInt(3, cliente.getCep());
-            pstm.setString(4, cliente.getEndereco());
-            pstm.setInt(5, cliente.getNumero());
-            pstm.setString(6, cliente.getComplemento());
-            pstm.setString(7, cliente.getBairro());
-            pstm.setString(8, cliente.getEstado());
-            pstm.setString(9, cliente.getCidade());
-            pstm.setString(10, cliente.getEmail());
-            pstm.setInt(11, cliente.getTelefone());
-            pstm.setString(12, cliente.getSituacao());
-            pstm.setInt(13, cliente.getCod());
+            pstm.setString(3, cliente.getCpfCnpj());
+            pstm.setString(4, cliente.getCep());
+            pstm.setString(5, cliente.getEndereco());
+            pstm.setInt(6, cliente.getNumero());
+            pstm.setString(7, cliente.getComplemento());
+            pstm.setString(8, cliente.getBairro());
+            pstm.setString(9, cliente.getEstado());
+            pstm.setString(10, cliente.getCidade());
+            pstm.setString(11, cliente.getEmail());
+            pstm.setString(12, cliente.getTelefone());
+            pstm.setString(13, cliente.getSituacao());
+            pstm.setInt(14, cliente.getCod());
 
             pstm.executeUpdate();
 
