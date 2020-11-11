@@ -102,7 +102,7 @@ public class ViewCadastroCliente extends javax.swing.JInternalFrame {
 
         jLabel12.setText("Telefone *");
 
-        jLabel13.setText("Situação *");
+        jLabel13.setText("Situação");
 
         txtNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,6 +126,11 @@ public class ViewCadastroCliente extends javax.swing.JInternalFrame {
 
         jCSituacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A", "I" }));
         jCSituacao.setSelectedItem("A");
+        jCSituacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCSituacaoActionPerformed(evt);
+            }
+        });
 
         txtComplemento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -179,7 +184,7 @@ public class ViewCadastroCliente extends javax.swing.JInternalFrame {
                         .addGap(20, 20, 20)
                         .addComponent(jLabel13)
                         .addGap(60, 60, 60)
-                        .addComponent(jCSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jCSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(350, 350, 350)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -343,7 +348,7 @@ public class ViewCadastroCliente extends javax.swing.JInternalFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
-        if (txtNome.getText().equals(null) || jCTipoPessoa.getSelectedIndex() == 0 || txtCpfCnpjs.getText().equals(null) || txtCep.getText().equals(null) || txtEndereco.getText().equals(null) || txtNumero.getText().equals(null) || jCEstado.getSelectedIndex() == 0 || txtTelefone.getText().equals(null) || jCSituacao.getSelectedIndex() == 0) {
+        if (txtNome.getText().equals(null) || jCTipoPessoa.getSelectedIndex() == 0 || txtCpfCnpjs.getText().equals(null) || txtCep.getText().equals(null) || txtEndereco.getText().equals(null) || txtNumero.getText().equals(null) || jCEstado.getSelectedIndex() == 0 || txtTelefone.getText().equals(null) ) {
             JOptionPane.showMessageDialog(null, "Verifique se preencheu todos os campos obrigatórios!");
         } else {
             
@@ -423,6 +428,10 @@ public class ViewCadastroCliente extends javax.swing.JInternalFrame {
         }
         
     }//GEN-LAST:event_txtCpfCnpjsFocusLost
+
+    private void jCSituacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCSituacaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCSituacaoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
