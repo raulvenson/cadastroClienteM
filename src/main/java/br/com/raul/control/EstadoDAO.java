@@ -27,7 +27,7 @@ public class EstadoDAO {
         ResultSet rs = null;
         String sql = "SELECT * FROM estado";
 
-        List<Estado> estados = new ArrayList<>();
+        List<Estado> lEstados = new ArrayList<>();
 
         try {
             pstm = (PreparedStatement) conn.prepareStatement(sql);
@@ -38,7 +38,7 @@ public class EstadoDAO {
                 estado.setCod(rs.getInt("codestado"));
                 estado.setEstadoSigla(rs.getString("estadosigla"));
                 estado.setEstado(rs.getString("estado"));
-                estados.add(estado);
+                lEstados.add(estado);
             }
 
         } catch (SQLException ex) {
@@ -46,8 +46,6 @@ public class EstadoDAO {
         } finally {
             Conexao.closeConnection(conn, pstm, rs);
         }
-
-        return estados;
-
+        return lEstados;
     }
 }

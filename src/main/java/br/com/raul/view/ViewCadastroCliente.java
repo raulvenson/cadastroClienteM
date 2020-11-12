@@ -21,8 +21,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import org.json.JSONObject;
 
@@ -40,11 +39,17 @@ public class ViewCadastroCliente extends javax.swing.JInternalFrame {
 //        txtTelefone.setFormatterFactory(TEL.getFormat());
 
         EstadoDAO estadoDAO = new EstadoDAO();
+//        for (Estado e : estadoDAO.read()) {
+//            jCEstado.addItem(e);
+//        }
 
-        for (Estado e : estadoDAO.read()) {
-            jCEstado.addItem(e);
-        }
+//Instanciando o DefaultComboBoxModel
+        DefaultComboBoxModel defaultComboBox = new DefaultComboBoxModel(estadoDAO.read().toArray());
+//passando os valores do "modelo" pro ComboBox
+        jCEstado.setModel(defaultComboBox);
 
+        Estado estado = (Estado) jCEstado.getSelectedItem();
+        System.out.println(estado.getEstadoSigla());
     }
 
 //    public ViewCadastroCliente(int cod) {
@@ -495,8 +500,15 @@ public class ViewCadastroCliente extends javax.swing.JInternalFrame {
         txtBairro.setText(viaCep.getBairro());
         txtCidade.setText(viaCep.getCidade());
         txtEndereco.setText(viaCep.getRua());
-        String estado = viaCep.getUF();
+//        String estado = viaCep.getUF();
+        
+        Estado estado = new Estado();
+        
+        estado.setEstadoSigla(viaCep.getUF());
+        
         jCEstado.setSelectedItem(estado);
+        
+        int y = 1;
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -549,7 +561,7 @@ public class ViewCadastroCliente extends javax.swing.JInternalFrame {
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("GET");
 
-        BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+        BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
         String line;
         while ((line = rd.readLine()) != null) {
             result.append(line);
@@ -567,7 +579,6 @@ public class ViewCadastroCliente extends javax.swing.JInternalFrame {
 //            System.out.println("E-Mail inválido");
 //        }
 //    }
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

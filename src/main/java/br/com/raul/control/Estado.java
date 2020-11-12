@@ -5,6 +5,8 @@
  */
 package br.com.raul.control;
 
+import java.util.Objects;
+
 /**
  *
  * @author VRauuul
@@ -42,6 +44,34 @@ public class Estado {
     public String toString() {
         return getEstadoSigla(); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 47 * hash + Objects.hashCode(this.estadoSigla);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Estado other = (Estado) obj;
+        if (!Objects.equals(this.estadoSigla, other.estadoSigla)) {
+            return false;
+        }
+        return true;
+    }
+
+  
+    
     
     
     
