@@ -44,6 +44,7 @@ public class Estado {
     public String toString() {
         return getEstadoSigla(); //To change body of generated methods, choose Tools | Templates.
     }
+    
 
     @Override
     public int hashCode() {

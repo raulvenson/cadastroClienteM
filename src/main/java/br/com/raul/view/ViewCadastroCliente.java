@@ -420,12 +420,14 @@ public class ViewCadastroCliente extends javax.swing.JInternalFrame {
             cliente.setCidade(txtCidade.getText());
             cliente.setEmail(txtEmail.getText());
 
-//            String telefone = txtTelefone.getText();
-//            telefone.replace("(", "");
-//            telefone.replace(")", "");
-//            telefone.replace("-", "");
-//            telefone.replace(" ", "");
-            cliente.setTelefone(txtTelefone.getText());
+            String telefone = txtTelefone.getText();
+            telefone = telefone.replace("(", "");
+            telefone = telefone.replace(")", "");
+            telefone = telefone.replace("-", "");
+            telefone = telefone.replace(" ", "");
+            System.out.println(txtTelefone.getText());
+            cliente.setTelefone(telefone);
+            System.out.println(cliente.getTelefone());
             cliente.setSituacao(jCSituacao.getSelectedItem().toString());
 
             clienteDao.save(cliente);
@@ -501,13 +503,13 @@ public class ViewCadastroCliente extends javax.swing.JInternalFrame {
         txtCidade.setText(viaCep.getCidade());
         txtEndereco.setText(viaCep.getRua());
 //        String estado = viaCep.getUF();
-        
+
         Estado estado = new Estado();
-        
+
         estado.setEstadoSigla(viaCep.getUF());
-        
+
         jCEstado.setSelectedItem(estado);
-        
+
         int y = 1;
 
     }//GEN-LAST:event_jButton3ActionPerformed
