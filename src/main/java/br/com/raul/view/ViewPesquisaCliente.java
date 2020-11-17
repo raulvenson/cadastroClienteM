@@ -7,33 +7,44 @@ package br.com.raul.view;
 
 import br.com.raul.control.Cliente;
 import br.com.raul.control.ClienteDAO;
+import br.com.raul.relatorio.Relatorio;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRException;
 
 /**
  *
  * @author VRauuul
  */
 public class ViewPesquisaCliente extends javax.swing.JInternalFrame {
-    
+
     Cliente cliente = new Cliente();
     ClienteDAO clienteDAO = new ClienteDAO();
+
+    //Instanciando a lista de clientes
     /**
      * Creates new form ViewPesquisaCliente
      */
     public ViewPesquisaCliente() {
         initComponents();
-        
-       // readJTable();
+
+        // readJTable();
     }
-    
+
+    public List<Cliente> geraListaClientes() {
+        ClienteDAO cdao = new ClienteDAO();
+        List<Cliente> lCliente = cdao.read();
+
+        return lCliente;
+    }
+
     public void readJTable() {
         DefaultTableModel dtmClientes = (DefaultTableModel) jTableClientes.getModel();
         dtmClientes.setNumRows(0);
         ClienteDAO cdao = new ClienteDAO();
 
         for (Cliente c : cdao.read()) {
-
             dtmClientes.addRow(new Object[]{
                 c.getCod(),
                 c.getNome(),
@@ -48,9 +59,7 @@ public class ViewPesquisaCliente extends javax.swing.JInternalFrame {
                 c.getCidade(),
                 c.getEmail(),
                 c.getTelefone(),
-                c.getSituacao(),
-            });
-            int x = 1;
+                c.getSituacao(),});
         }
     }
 
@@ -71,6 +80,7 @@ public class ViewPesquisaCliente extends javax.swing.JInternalFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -144,6 +154,13 @@ public class ViewPesquisaCliente extends javax.swing.JInternalFrame {
             }
         });
 
+        jButton4.setText("Relatório");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -154,6 +171,8 @@ public class ViewPesquisaCliente extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton4)
+                .addGap(18, 18, 18)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -164,7 +183,8 @@ public class ViewPesquisaCliente extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2)
-                    .addComponent(jButton3)))
+                    .addComponent(jButton3)
+                    .addComponent(jButton4)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -194,14 +214,14 @@ public class ViewPesquisaCliente extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
+
         readJTable();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        
-         if (jTableClientes.getSelectedRow() != -1) {
+
+        if (jTableClientes.getSelectedRow() != -1) {
 
             cliente.setCod((int) jTableClientes.getValueAt(jTableClientes.getSelectedRow(), 0));
             clienteDAO.delete(cliente);
@@ -211,7 +231,7 @@ public class ViewPesquisaCliente extends javax.swing.JInternalFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Selecione uma linha para excluir");
         }
-        
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -222,7 +242,7 @@ public class ViewPesquisaCliente extends javax.swing.JInternalFrame {
             cliente.setCod((int) jTableClientes.getValueAt(jTableClientes.getSelectedRow(), 0));
 
             ViewUpdateModal viewUpdateModal = new ViewUpdateModal(null, true, cliente.getCod());
-            
+
             int x = 1;
 
             viewUpdateModal.setVisible(true);
@@ -230,14 +250,28 @@ public class ViewPesquisaCliente extends javax.swing.JInternalFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Selecione uma linha para alterar");
         }
-        
+
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        List<Cliente> lCliente = this.geraListaClientes();
+        Relatorio relatorio = new Relatorio();
+        try {
+            relatorio.gerarRelatorio(lCliente);
+        } catch (JRException ex) {
+            ex.printStackTrace();
+            //JOptionPane.showMessageDialog(null, "Erro ao gerar relatório");
+        }
+
+    }//GEN-LAST:event_jButton4ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

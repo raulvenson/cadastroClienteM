@@ -138,6 +138,8 @@ public class Cliente {
         this.situacao = situacao;
     }
 
-    
+    public String toString(){
+        return "Código: " + cod + "Nome: " + nome + "\n\n";
+    }
     
 }
