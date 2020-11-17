@@ -35,7 +35,6 @@ public class ViewPesquisaCliente extends javax.swing.JInternalFrame {
     public List<Cliente> geraListaClientes() {
         ClienteDAO cdao = new ClienteDAO();
         List<Cliente> lCliente = cdao.read();
-
         return lCliente;
     }
 

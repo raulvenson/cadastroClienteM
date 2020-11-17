@@ -5,13 +5,13 @@
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
-	<field name="cod" class="java.lang.String"/>
+	<field name="cod" class="java.lang.Integer"/>
 	<field name="nome" class="java.lang.String"/>
 	<field name="tipopessoa" class="java.lang.String"/>
 	<field name="cpfCnpj" class="java.lang.String"/>
 	<field name="cep" class="java.lang.String"/>
 	<field name="endereco" class="java.lang.String"/>
-	<field name="numero" class="java.lang.String"/>
+	<field name="numero" class="java.lang.Integer"/>
 	<field name="complemento" class="java.lang.String"/>
 	<field name="bairro" class="java.lang.String"/>
 	<field name="estado" class="java.lang.String"/>
@@ -46,7 +46,7 @@
 					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
 				</reportElement>
 				<textField>
-					<reportElement x="0" y="0" width="485" height="17" uuid="159c49d9-898b-47af-970e-8014a091cf5e">
+					<reportElement key="" x="0" y="0" width="485" height="17" uuid="159c49d9-898b-47af-970e-8014a091cf5e">
 						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="84b960f7-1c7f-41d1-85ab-b85476f4cc9b"/>
 					</reportElement>
 					<textFieldExpression><![CDATA[$F{cod}]]></textFieldExpression>
@@ -222,7 +222,12 @@
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="45" splitType="Stretch"/>
+		<band height="67" splitType="Stretch">
+			<textField>
+				<reportElement x="380" y="37" width="100" height="30" uuid="5e21db14-fc13-4334-9779-ac675b23121c"/>
+				<textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+			</textField>
+		</band>
 	</columnFooter>
 	<pageFooter>
 		<band height="54" splitType="Stretch"/>

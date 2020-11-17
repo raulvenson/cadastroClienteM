@@ -24,11 +24,12 @@ public class Relatorio {
     
     public void gerarRelatorio(List<Cliente> lCliente) throws JRException{
         
-        InputStream fonte = Relatorio.class.getResourceAsStream("/relatorio.jrxml");
+        String fonte = "D:\\Projetos\\CadastroClientes\\cadastroClienteM\\src\\main\\java\\report\\relatorio.jasper";
         
-        JasperReport report = JasperCompileManager.compileReport(fonte);
+//        JasperReport report = JasperCompileManager.compileReport(fonte);
         
-        JasperPrint print = JasperFillManager.fillReport(report, null, new JRBeanCollectionDataSource(lCliente));
+        JasperPrint print = JasperFillManager.fillReport(fonte, null, new JRBeanCollectionDataSource(lCliente)); 
+        //JasperPrint print = JasperFillManager.fillReport(fonte, null, new JRBeanCollectionDataSource(lCliente)); 
         
         JasperViewer.viewReport(print, false);
         
