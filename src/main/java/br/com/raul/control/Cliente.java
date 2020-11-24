@@ -5,25 +5,49 @@
  */
 package br.com.raul.control;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  *
  * @author VRauuul
  */
+
+@Entity
+@Table(name = "cliente")
 public class Cliente {
     
+    @Id
+    @GeneratedValue
     private int cod;
+    @Column
     private String nome;
+    @Column
     private String tipopessoa;
+    @Column
     private String cpfCnpj;
+    @Column
     private String cep;
+    @Column
     private String endereco;
+    @Column
     private int numero;
+    @Column
     private String complemento;
+    @Column
     private String bairro;
+    @Column
     private String estado;
+    @Column
     private String cidade;
+    @Column
     private String email;
+    @Column
     private String telefone;
+    @Column
     private String situacao;
 
     public int getCod() {

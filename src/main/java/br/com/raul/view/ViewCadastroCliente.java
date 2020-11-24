@@ -7,6 +7,7 @@ package br.com.raul.view;
 
 import br.com.raul.control.Cliente;
 import br.com.raul.control.ClienteDAO;
+import br.com.raul.control.ControllerClienteHibernate;
 import br.com.raul.control.Estado;
 import br.com.raul.control.EstadoDAO;
 import br.com.raul.control.cpfcnpj.CNPJ;
@@ -62,6 +63,7 @@ public class ViewCadastroCliente extends javax.swing.JInternalFrame {
 //    }
     Cliente cliente = new Cliente();
     ClienteDAO clienteDao = new ClienteDAO();
+    ControllerClienteHibernate cch = new ControllerClienteHibernate();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -411,7 +413,7 @@ public class ViewCadastroCliente extends javax.swing.JInternalFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
-        if (txtNome.getText().equals(null) || jCTipoPessoa.getSelectedIndex() == 0 || txtCpfCnpjs.getText().equals(null) || txtCep.getText().equals(null) || txtEndereco.getText().equals(null) || txtNumero.getText().equals(null) || jCEstado.getSelectedIndex() == 0 || txtTelefone.getText().equals(null)) {
+        if (txtNome.getText() == null || jCTipoPessoa.getSelectedIndex() == 0 || txtCpfCnpjs.getText() == null || txtCep.getText() == null || txtEndereco.getText() == null || txtNumero.getText() == null || jCEstado.getSelectedIndex() == 0 || txtTelefone.getText() == null) {
             JOptionPane.showMessageDialog(null, "Verifique se preencheu todos os campos obrigatórios!");
         } else {
 
@@ -438,7 +440,8 @@ public class ViewCadastroCliente extends javax.swing.JInternalFrame {
             System.out.println(cliente.getTelefone());
             cliente.setSituacao(jCSituacao.getSelectedItem().toString());
 
-            clienteDao.save(cliente);
+            cch.create(cliente);
+//            clienteDao.save(cliente);
 
             txtNome.setText("");
             jCTipoPessoa.setSelectedIndex(0);
