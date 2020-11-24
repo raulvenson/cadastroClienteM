@@ -30,6 +30,7 @@ public class ControllerClienteHibernate {
         em.getTransaction().commit();
         System.out.println("ID do Cliente CRIADO: " + cliente.getCod());
         }catch(Exception e){
+            e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Erro ao salvar");
         }
     }

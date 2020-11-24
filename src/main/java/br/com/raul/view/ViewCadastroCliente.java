@@ -413,7 +413,7 @@ public class ViewCadastroCliente extends javax.swing.JInternalFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
-        if (txtNome.getText() == null || jCTipoPessoa.getSelectedIndex() == 0 || txtCpfCnpjs.getText() == null || txtCep.getText() == null || txtEndereco.getText() == null || txtNumero.getText() == null || jCEstado.getSelectedIndex() == 0 || txtTelefone.getText() == null) {
+        if (txtNome.getText().equals(null) || jCTipoPessoa.getSelectedIndex() == 0 || txtCpfCnpjs.getText().equals(null) || txtCep.getText().equals(null) || txtEndereco.getText().equals(null) || txtNumero.getText().equals(null) || txtTelefone.getText().equals(null)) {
             JOptionPane.showMessageDialog(null, "Verifique se preencheu todos os campos obrigatórios!");
         } else {
 
